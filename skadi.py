@@ -1,32 +1,34 @@
-# Loop Iteration Counter 
-LoopIteration = 0
-
-while():
-    print()
-
-
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
 def InputAndRunBlock():
-    # Number Input
-    global OriBase # Makes the "OriValue" variable global
-    OriBase = str(input("Input Original Base Number: "))
-    validOriBase = ["2", "8", "10", "16"]
+        
+        global LoopIteration # Makes the LoopIteration variable 
+        LoopIteration = 0
+        LoopIteration += 1 # Adds 1 to LoopIteration
 
-    if OriBase.strip() not in validOriBase:
-        print("Wrong Base, please enter a valid Base")
+        # Number Input
+        global OriBase # Makes the "OriValue" variable global
+        OriBase = str(input("Input Original Base Number: "))
+        validOriBase = ["2", "8", "10", "16"]
 
-    global OriValue # Makes the "OriValue" variable global
-    OriValue = input("Input number to be converted: ")
+        if OriBase.strip() not in validOriBase:
+            print("Error! Value or Base Invalid!")
+            return
 
-    if OriBase == "2":
-        OrigBinary()
-    elif OriBase == "8":
-        OrigOctal()
-    elif OriBase == "10":
-        OrigDecimal()
-    elif OriBase == "16":
-        OrigHexadecimal()
+        global OriValue # Makes the "OriValue" variable global
+        OriValue = input("Input the number to be converted: ")
+
+        global ErrorMessage # Allows the variable ErrorMessage to be referenced by other defs
+        ErrorMessage = "Number entered is Invalid"
+
+        if OriBase == "2":
+            OrigBinary()
+        elif OriBase == "8":
+            OrigOctal()
+        elif OriBase == "10":
+            OrigDecimal()
+        elif OriBase == "16":
+            OrigHexadecimal()
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -51,10 +53,10 @@ def OrigBinary():
 
         # To Hexadecimal
         Hexadecimal = hex(ConValue) [2:]
-        print(Hexadecimal)
+        print(Hexadecimal.upper)
     
     except ValueError:
-        print("Number entered is Invalid")
+        print(ErrorMessage)
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
@@ -79,15 +81,14 @@ def OrigOctal():
 
         # To Hexadecimal
         Hexadecimal = hex(ConValue) [2:]
-        print(Hexadecimal)
+        print(Hexadecimal.upper)
 
     except ValueError:
-        print("Number entered is Invalid")
+        print(ErrorMessage)
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
 # From Decimal
-# From Octal
 def OrigDecimal():
     try:
 
@@ -108,10 +109,10 @@ def OrigDecimal():
 
         # To Hexadecimal
         Hexadecimal = hex(ConValue) [2:]
-        print(Hexadecimal)
+        print(Hexadecimal.upper)
 
     except ValueError:
-        print("Number entered is Invalid")
+        print(ErrorMessage)
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -135,12 +136,27 @@ def OrigHexadecimal():
         print(ConValue)
 
         # To Hexadecimal
-        print(OriValue)
+        print(OriValue.upper)
 
     except ValueError:
-        print("Number entered is Invalid")
+        print(ErrorMessage)
 
 # ---------------------------------------------------------------------------------------------------------------------------------------
 
+while True: # The while loop
+    InputAndRunBlock() # runs the InputAndRunBlock function
 
-InputAndRunBlock()
+    if LoopIteration >= 1: # Checks if LoopIteration value is greater or equal to 1
+        ChoiceInput  = str(input("Terminate Program? \nInput uppercase letter Y if you would like to terminate program, otherwise input anything: "))
+
+        # If ChoiceInput is exactly Y
+        if ChoiceInput == "Y":
+            print("Shutting Down Program")
+            break 
+
+        # If ChoiceInput is anything but Y
+        else:
+            continue
+    # If LoopIteration is below or equal to 0
+    else:
+        continue 
