@@ -53,7 +53,7 @@ def OrigBinary():
 
         # To Hexadecimal
         Hexadecimal = hex(ConValue) [2:]
-        print(Hexadecimal.upper)
+        print(Hexadecimal)
     
     except ValueError:
         print(ErrorMessage)
@@ -81,7 +81,7 @@ def OrigOctal():
 
         # To Hexadecimal
         Hexadecimal = hex(ConValue) [2:]
-        print(Hexadecimal.upper)
+        print(Hexadecimal)
 
     except ValueError:
         print(ErrorMessage)
@@ -109,7 +109,7 @@ def OrigDecimal():
 
         # To Hexadecimal
         Hexadecimal = hex(ConValue) [2:]
-        print(Hexadecimal.upper)
+        print(Hexadecimal)
 
     except ValueError:
         print(ErrorMessage)
@@ -136,7 +136,7 @@ def OrigHexadecimal():
         print(ConValue)
 
         # To Hexadecimal
-        print(OriValue.upper)
+        print(OriValue)
 
     except ValueError:
         print(ErrorMessage)
